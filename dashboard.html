@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — Aria Smart Classroom</title>
+<meta name="description" content="Role-based dashboard for the Aria Smart Classroom assistant." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="assets/css/portal.css" />
+<link rel="stylesheet" href="assets/css/advanced.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%238b5cf6'/><text x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<script src="assets/js/glass.js"></script>
+<link rel="stylesheet" href="assets/css/solver.css" />
+</head>
+<body class="portal-body">
+
+<div class="atmos" aria-hidden="true">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="grid"></div>
+  <div class="grain"></div>
+  <div class="vig"></div>
+</div>
+
+<div class="dash">
+
+  <!-- ============================ SIDEBAR ============================ -->
+  <aside class="side" id="side">
+    <a href="index.html" class="side-brand">
+      <div class="brand-mark">A</div>
+      <div><b>Aria</b><span>Smart Classroom</span></div>
+    </a>
+
+    <div class="side-role">
+      <b id="sideRoleName">—</b>
+      <span id="sideRoleTier">—</span>
+    </div>
+
+    <nav class="side-nav" id="sideNav" aria-label="Panel navigation"></nav>
+
+    <div class="side-foot">
+      <button class="side-user" id="profileBtn" type="button" title="Edit your profile">
+        <div class="av av-md" id="userAvatar">—</div>
+        <div style="min-width:0;text-align:left">
+          <b id="userName">—</b>
+          <span id="userEmail" style="overflow:hidden;text-overflow:ellipsis;display:block">—</span>
+        </div>
+      </button>
+      <button class="snav" id="logoutBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+        Sign out
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============================== MAIN ============================= -->
+  <div class="main">
+    <header class="topbar">
+      <button class="tb-btn side-toggle" id="sideToggle" type="button" aria-label="Toggle sidebar">☰</button>
+      <div>
+        <h1 id="pageTitle">Dashboard</h1>
+        <div class="tb-sub" id="pageSub">Loading…</div>
+      </div>
+      <div class="tb-spacer"></div>
+      <div id="bellMount"></div>
+      <span class="badge-role" id="roleBadge">—</span>
+    </header>
+
+    <main class="view" id="view"></main>
+  </div>
+</div>
+
+<!-- ============================== AI AGENT ============================= -->
+<button class="ai-fab" id="aiFab" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M4.2 7.5 6.8 9"/><path d="M17.2 15 19.8 16.5"/><path d="M4.2 16.5 6.8 15"/><path d="M17.2 9 19.8 7.5"/><circle cx="12" cy="12" r="3.4"/></svg>
+  <span>Ask with AI</span>
+</button>
+
+<aside class="ai-drawer" id="aiDrawer" aria-label="Ask with AI">
+  <div class="ai-head">
+    <div class="ai-dot"></div>
+    <div>
+      <b>Ask with AI</b>
+      <span id="aiScope">Role-aware · grounded in this panel's data</span>
+    </div>
+    <button class="ai-close" id="aiReset" type="button" aria-label="Start a new conversation" title="New conversation" style="margin-right:4px">⟳</button>
+    <button class="ai-close" id="aiClose" type="button" aria-label="Close assistant">✕</button>
+  </div>
+  <div class="ai-body" id="aiBody"></div>
+  <div class="ai-sugg" id="aiSugg"></div>
+  <div class="ai-input">
+    <input type="text" id="aiInput" placeholder="Ask about your timetable, a course, or a missing file…" autocomplete="off" />
+    <button id="aiSend" type="button" aria-label="Send message">↑</button>
+  </div>
+</aside>
+
+<!-- ============================== PROFILE SHEET ============================= -->
+<div class="sheet-wrap" id="profileSheet" role="dialog" aria-modal="true" aria-labelledby="pfTitle">
+  <div class="sheet">
+    <h3 id="pfTitle">Your profile</h3>
+    <p class="sub">Add a photo so your colleagues can recognise you across the portal.</p>
+
+    <div class="alert" id="pfAlert" role="alert"></div>
+
+    <div style="display:flex;align-items:center;gap:18px;margin-bottom:22px">
+      <div class="av av-xl" id="pfAvatar">—</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button type="button" class="sbtn" id="pfUpload" style="height:38px">Upload photo</button>
+        <button type="button" class="linkish" id="pfRemove" style="font-size:12.5px;text-align:left">Remove photo</button>
+      </div>
+    </div>
+
+    <div class="fld">
+      <label for="pfName">Display name</label>
+      <input type="text" id="pfName" autocomplete="name" />
+    </div>
+
+    <div class="cred">
+      <div class="cred-head">Account</div>
+      <div class="cred-row"><span>Email</span><span id="pfEmail">—</span></div>
+      <div class="cred-row"><span>Role</span><span id="pfRole">—</span></div>
+      <div class="cred-row"><span>Member since</span><span id="pfSince">—</span></div>
+    </div>
+
+    <div class="row">
+      <button type="button" class="sbtn" id="pfCancel">Cancel</button>
+      <button type="button" class="pbtn" id="pfSave">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="avatarInput" accept="image/*" hidden />
+
+<script src="assets/js/env.js?v=3"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/ai.js"></script>
+<script src="assets/js/assistant.js"></script>
+<script src="assets/js/portal.js"></script>
+</body>
+</html>

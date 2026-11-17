@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign in — Aria Smart Classroom</title>
+<meta name="description" content="Sign in to the Aria Smart Classroom portal with your institutional credentials or your Google account." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="assets/css/portal.css" />
+<link rel="stylesheet" href="assets/css/advanced.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%238b5cf6'/><text x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<script src="assets/js/glass.js"></script>
+</head>
+<body class="portal-body">
+
+<!-- ============================== ATMOSPHERE ============================== -->
+<div class="atmos" aria-hidden="true">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="grid"></div>
+  <div class="grain"></div>
+  <div class="vig"></div>
+</div>
+
+<div class="auth-v2">
+
+  <!-- ------------------------------------------------------------- stage -->
+  <aside class="stage">
+    <div>
+      <a href="index.html" class="brandline">
+        <div class="mark">A</div>
+        <div>
+          <b>Aria</b>
+          <span>Smart Classroom</span>
+        </div>
+      </a>
+
+      <div class="kicker" style="margin-top:38px"><i></i> Campus intelligence layer</div>
+
+      <h1>One assistant.<br /><em>Every panel.</em><br />Zero guesswork.</h1>
+
+      <p class="lede">
+        Aria reads the timetable, the course catalogue and the support queue, then answers
+        in plain English. Everyone on campus sees exactly what their role needs — and
+        nothing they should not.
+      </p>
+
+      <div class="feat">
+        <div class="feat-row">
+          <div class="feat-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+          </div>
+          <div>
+            <b>A workspace scoped to you</b>
+            <span>Your account decides which timetable, roster and records open — nothing more is exposed.</span>
+          </div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M4.2 7.5 6.8 9"/><path d="M17.2 15 19.8 16.5"/><path d="M4.2 16.5 6.8 15"/><path d="M17.2 9 19.8 7.5"/><circle cx="12" cy="12" r="3.4"/></svg>
+          </div>
+          <div>
+            <b>An assistant that names sources</b>
+            <span>Ask where a missing handout lives — Aria names the lecturer and the exact course it belongs to.</span>
+          </div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <div>
+            <b>Credentials issued, never shared</b>
+            <span>Access is created by your department and handed to you. Passwords are generated, never shared.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-foot">
+      <span id="instName">Northfield Institute of Technology</span>
+      <i></i>
+      <span>Spring 2025</span>
+      <i></i>
+      <span>Encrypted session</span>
+    </div>
+  </aside>
+
+  <!-- -------------------------------------------------------------- gate -->
+  <main class="gate">
+    <div class="gate-inner">
+
+      <!-- ============================================== SIGN IN PANEL -->
+      <section class="gate-panel active" id="panelSignin">
+        <div class="gate-head">
+          <h2>Sign in</h2>
+          <p>Use the credentials issued to you, or continue with Google.</p>
+        </div>
+
+        <div class="alert" id="authAlert" role="alert"></div>
+
+        <button type="button" class="gbtn" id="googleBtn">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.4 5.4 2.5 13.2l7.8 6.1C12.2 13.2 17.6 9.5 24 9.5Z"/>
+            <path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-2.8-.4-4.1H24v8.4h12.5c-.3 2.1-1.6 5.2-4.7 7.3l7.6 5.9c4.5-4.2 6.7-10.3 6.7-17.5Z"/>
+            <path fill="#FBBC05" d="M10.3 28.7a14.6 14.6 0 0 1 0-9.4l-7.8-6.1a24 24 0 0 0 0 21.6l7.8-6.1Z"/>
+            <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2 1.4-4.8 2.4-8.3 2.4-6.4 0-11.8-3.7-13.7-9.8l-7.8 6.1C6.4 42.6 14.6 48 24 48Z"/>
+          </svg>
+          <span>Login with Google</span>
+        </button>
+
+        <div class="or">or use your email</div>
+
+        <form id="signinForm" novalidate>
+          <div class="fld">
+            <label for="email">Institutional email</label>
+            <input type="email" id="email" name="email" placeholder="name@northfield.edu" autocomplete="username" required />
+          </div>
+          <div class="fld">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="pbtn" id="signinBtn">Sign in to my panel</button>
+        </form>
+
+        <div class="gate-links">
+          <span>Looking for the AI Solver? <a href="solver.html">Open it here</a></span>
+          <button type="button" class="linkish" id="toHelp">Need help?</button>
+        </div>
+
+        <p class="gate-note">
+          <b>Access is issued, not self-assigned.</b> Lecturer, staff and student logins are
+          created by your department's management team. If you have not received credentials,
+          contact the academic office.
+        </p>
+      </section>
+
+      <!-- ================================================== HELP -->
+      <section class="gate-panel" id="panelHelp">
+        <div class="gate-head">
+          <h2>Need help?</h2>
+          <p>Most access problems are solved by the academic office.</p>
+        </div>
+
+        <div class="cred">
+          <div class="cred-head">Who to contact</div>
+          <div class="cred-row"><span>Lost password</span><span>Academic office</span></div>
+          <div class="cred-row"><span>No account yet</span><span>Your programme lead</span></div>
+          <div class="cred-row"><span>Wrong role</span><span>Management panel</span></div>
+          <div class="cred-row"><span>Technical fault</span><span id="helpEmail">support@northfield.edu</span></div>
+        </div>
+
+        <p class="gate-note">
+          When you write in, include your full name, your programme and the email address
+          you were issued. That is enough for the office to find your record.
+        </p>
+
+        <div class="gate-links">
+          <button type="button" class="linkish" id="toSignin2">← Back to sign in</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/js/env.js?v=3"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/google.js?v=5"></script>
+<script src="assets/js/login.js?v=4"></script>
+</body>
+</html>

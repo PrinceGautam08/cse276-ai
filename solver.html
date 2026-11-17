@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Solver — Aria Smart Classroom</title>
+<meta name="description" content="Aria Solver answers questions. It does not give guidance. Google sign-in required." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="assets/css/portal.css" />
+<link rel="stylesheet" href="assets/css/advanced.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e9a85b'/><text x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='%232a1708' text-anchor='middle'>=</text></svg>" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/solver.css" />
+<script src="assets/js/glass.js"></script>
+</head>
+<body class="portal-body solver-body">
+
+<header class="sv-top" id="svTop">
+  <a class="sv-brand" href="index.html">
+    <div class="brand-mark">A</div>
+    <div><b>Aria Solver</b><span>Answers questions · no guidance</span></div>
+  </a>
+  <div class="sv-spacer"></div>
+  <div id="bellMount" hidden></div>
+  <a class="tb-btn" href="dashboard.html" id="toDash" hidden>Dashboard</a>
+  <span class="sv-user" id="svUserBtn" hidden><span id="svUserPic"></span><b id="svUserName">—</b></span>
+  <button class="tb-btn" id="svOut" type="button" hidden>Sign out</button>
+</header>
+
+<main class="sv-main">
+
+  <!-- ---------------------------------------------------- loading skeleton -->
+  <section class="sv-boot" id="boot" aria-busy="true" aria-label="Loading">
+    <div class="sv-card">
+      <i class="skel" style="width:46%;height:26px"></i>
+      <i class="skel" style="width:80%;height:13px;margin-top:16px"></i>
+      <i class="skel" style="width:62%;height:13px;margin-top:10px"></i>
+      <i class="skel" style="width:100%;height:48px;margin-top:26px;border-radius:14px"></i>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- Google gate -->
+  <section class="sv-gate" id="gate" hidden>
+    <div class="sv-card gate-card">
+      <div class="gate-mark">A</div>
+      <h1>Sign in to use the AI Solver</h1>
+      <p class="lede">The Solver solves your questions. It does not guide, advise or answer questions about administration. A Google sign-in keeps your chat and your classes tied to you.</p>
+      <div class="alert show info" id="gateNote" role="alert" hidden></div>
+      <button type="button" class="gbtn" id="googleBtn">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.4 5.4 2.5 13.2l7.8 6.1C12.2 13.2 17.6 9.5 24 9.5Z"/>
+          <path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-2.8-.4-4.1H24v8.4h12.5c-.3 2.1-1.6 5.2-4.7 7.3l7.6 5.9c4.5-4.2 6.7-10.3 6.7-17.5Z"/>
+          <path fill="#FBBC05" d="M10.3 28.7a14.6 14.6 0 0 1 0-9.4l-7.8-6.1a24 24 0 0 0 0 21.6l7.8-6.1Z"/>
+          <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2 1.4-4.8 2.4-8.3 2.4-6.4 0-11.8-3.7-13.7-9.8l-7.8 6.1C6.4 42.6 14.6 48 24 48Z"/>
+        </svg>
+        <span>Login with Google</span>
+      </button>
+      <div class="gate-rules">
+        <div><b>It solves</b><span>Maths, programming, science and exam problems, step by step.</span></div>
+        <div><b>It shares</b><span>Lecturer names and the files they uploaded to your classes.</span></div>
+        <div><b>It won't</b><span>Give advice, or discuss admins, staff, accounts or anyone's records.</span></div>
+      </div>
+      <p class="gate-foot"><a href="login.html">Email login</a></p>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------------- app -->
+  <section class="sv-app" id="app" hidden>
+    <div class="sv-card chat">
+      <div class="chat-head">
+        <div>
+          <h1>Ask a question</h1>
+          <span>Paste the exact problem. I'll give the answer, then the working.</span>
+        </div>
+        <span class="tag a" id="svEngine">Offline mode</span>
+        <button type="button" class="tb-btn" id="svNew">New chat</button>
+      </div>
+
+      <div class="sv-log" id="svLog" aria-live="polite"></div>
+      <div class="sv-sugg" id="svSugg"></div>
+
+      <div class="sv-lock" id="svLock" hidden role="status">
+        <b>Paused <span id="svLockTime">5:00</span></b>
+        <span>The Solver only answers questions. You can ask again when the timer ends.</span>
+      </div>
+
+      <form class="sv-form" id="svForm">
+        <textarea id="svTa" rows="1" placeholder="Type a question…" aria-label="Your question"></textarea>
+        <button type="submit" id="svSend" aria-label="Send">Solve</button>
+      </form>
+    </div>
+
+    <section class="sv-classes" aria-labelledby="clsH">
+      <div class="sv-sec-head">
+        <h2 id="clsH">Your classes</h2>
+        <span>Lecturers and next sessions · shown only after you sign in</span>
+      </div>
+      <div class="class-grid" id="svClasses"></div>
+    </section>
+  </section>
+</main>
+
+<script src="assets/js/env.js?v=3"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/ai.js"></script>
+<script src="assets/js/google.js?v=5"></script>
+<script src="assets/js/solver.js?v=4"></script>
+</body>
+</html>
