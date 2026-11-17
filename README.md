@@ -70,6 +70,7 @@ from the knowledge base are shown in their original English with a Hindi lead-in
 Any static server works:
 
 ```bash
+mv env.example .env
 cd /workspace
 python3 -m http.server 8000
 # open http://localhost:8000
